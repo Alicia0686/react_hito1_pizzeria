@@ -3,13 +3,38 @@ import CardPizza from "./CardPizza";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import pizzas from "../scripts/pizzas";
 
 const Home = () => {
+  
   return (
     <>
       <Header />
-
       <Container>
+        <Row className="justify-content-center m-3 gap-3">
+          {pizzas.map((pizza) => (
+            <Col md="auto" key={pizza.id}>
+              <CardPizza
+                name={pizza.name}
+                price={pizza.price}
+                ingredients={pizza.ingredients}
+                img={pizza.img}
+                desc={pizza.desc}
+                id={pizza.id}
+              />
+            </Col>
+          ))}
+        </Row>
+      </Container>
+    </>
+  );
+};
+
+export default Home;
+
+
+{
+  /*<Container>
         <Row className="justify-content-center m-3 gap-3">
           <Col md="auto">
             <CardPizza
@@ -42,8 +67,18 @@ const Home = () => {
           </Col>
         </Row>
       </Container>
-    </>
-  );
-};
 
-export default Home;
+
+      {
+        pizzas.map((pizza) => (
+          <CardPizza
+            name={pizza.name}
+            price={pizza.price}
+            ingredients={pizza.ingredients}
+            img={pizza.img}
+            description={pizza.desc}
+            id={pizza.id}
+          />
+        ));
+      }*/
+}
