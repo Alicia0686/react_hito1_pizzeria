@@ -1,20 +1,37 @@
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import NavDropdown from "react-bootstrap/NavDropdown";
 import Button from "react-bootstrap/Button";
+import { Link } from "react-router-dom";
+
 const Navbar1 = () => {
   const total = 25000;
-  const token = true;
+  const token = false;
   const login = token ? (
-    <Nav.Link href="#link">🔐Logout</Nav.Link>
+    <Button variant="outline-light ms-2">
+      <Link to="/logout" className="text-decoration-none ms-3 text-white">
+        🔐Logout
+      </Link>
+    </Button>
   ) : (
-    <Nav.Link href="#link">🔐Login</Nav.Link>
+    <Button variant="outline-light ms-2">
+      <Link to="/login" className="text-decoration-none ms-3 text-white">
+        🔐Login
+      </Link>
+    </Button>
   );
   const register = token ? (
-    <Nav.Link href="#link">🔐Profile</Nav.Link>
+    <Button variant="outline-light ms-2">
+      <Link to="/profile" className="text-decoration-none ms-3 text-white">
+        🔐Profile
+      </Link>
+    </Button>
   ) : (
-    <Nav.Link href="#link">🔐Register</Nav.Link>
+    <Button variant="outline-light ms-2">
+      <Link to="/register" className="text-decoration-none ms-3 text-white">
+        🔐Register
+      </Link>
+    </Button>
   );
 
   return (
@@ -24,13 +41,19 @@ const Navbar1 = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Button variant="outline-light">🍕Home</Button>
+            <Button variant="outline-light">
+              <Link to="/" className="text-decoration-none ms-3 text-white">
+                🍕Home
+              </Link>
+            </Button>
             {login}
             {register}
           </Nav>
           <Nav>
             <Button variant="outline-light">
-              🛒Total: {total.toLocaleString("es-ES")}
+              <Link to="/cart" className="text-decoration-none text-white">
+                🛒Total: {total.toLocaleString("es-ES")}
+              </Link>
             </Button>
           </Nav>
         </Navbar.Collapse>

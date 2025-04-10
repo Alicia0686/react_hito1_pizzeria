@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import Header from "./Header";
-import CardPizza from "./CardPizza";
+import Header from "../components/Header";
+import CardPizza from "../components/CardPizza";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
