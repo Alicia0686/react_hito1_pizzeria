@@ -1,41 +1,17 @@
-import { useState } from "react";
-import { pizzaCart } from "../scripts/pizzas";
+import { useContext } from "react";
+import {CartContext} from "../context/CartContext";
 import "./Cart.css";
 
+
 const Cart = () => {
-  const [cart, setCart] = useState(pizzaCart);
 
-  const agregarPizzas = (id) => {
-    setCart(
-      cart.map((pizzaCart) => {
-        if (pizzaCart.id === id) {
-          let suma = pizzaCart.count + 1;
-          return { ...pizzaCart, count: suma };
-        }
-        return pizzaCart;
-      })
-    );
-  };
+  const { cart, total, agregarPizzas, restarPizzas } =
+    useContext(CartContext);
 
-  const restarPizzas = (id) => {
-    setCart(
-      cart.map((pizzaCart) => {
-        if (pizzaCart.id === id) {
-          let resta = pizzaCart.count - 1;
-          return { ...pizzaCart, count: resta };
-        }
-        return pizzaCart;
-      })
-    );
-  };
 
-  const total = cart.reduce((acumulador, pizzaCart) => {
-    return acumulador + pizzaCart.price * pizzaCart.count;
-  }, 0);
-
-  return (
+   return (
     <div className="carro">
-      <h3>Detalles del pedido:</h3>;
+      <h3>Detalles del pedido:</h3>
       <div className="lista">
         <ul>
           {cart.map((pizzaCart) => (
@@ -45,14 +21,14 @@ const Cart = () => {
               <p>{pizzaCart.price}</p>
               <button
                 className="buttonResta"
-                onClick={() => restarPizzas(pizzaCart.id)}
+                onClick={() => restarPizzas(pizzaCart)}
               >
                 -
               </button>
               <p>{pizzaCart.count}</p>
               <button
                 className="buttonSuma"
-                onClick={() => agregarPizzas(pizzaCart.id)}
+                onClick={() => agregarPizzas(pizzaCart)}
               >
                 +
               </button>
@@ -60,9 +36,28 @@ const Cart = () => {
           ))}
         </ul>
       </div>
-      <h2>Total: ${total}</h2>;<button className="buttonPagar">Pagar</button>
+      <h2>Total: ${total}</h2><button className="buttonPagar">Pagar</button>
     </div>
   );
 };
 
 export default Cart;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

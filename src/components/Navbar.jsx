@@ -3,9 +3,11 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { CartContext } from "../context/CartContext";
 
 const Navbar1 = () => {
-  const total = 25000;
+  const {total} = useContext(CartContext);
   const token = false;
   const login = token ? (
     <Button variant="outline-light ms-2">

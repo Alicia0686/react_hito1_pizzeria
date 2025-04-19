@@ -23,6 +23,8 @@ const Home = () => {
     getPizzas();
   }, []);
 
+ 
+
   return (
     <>
       <Header />

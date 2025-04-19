@@ -14,13 +14,23 @@
   justify-content: center;
 }
 
+ul{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+    
+}
+  
+
 li {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-
-  gap: 45px;
+  justify-content: flex-start;
+  gap: 70px;
   margin-top: 25px;
+  width: 100%;
+  max-width: 700px;
+  
 }
 
 img {
