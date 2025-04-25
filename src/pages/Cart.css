@@ -63,3 +63,8 @@ img {
   margin: 25px;
 
 }
+
+.buttonPagar:disabled{
+  background-color: lightgray;
+  color: grey;
+}

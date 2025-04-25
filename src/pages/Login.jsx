@@ -1,12 +1,18 @@
 import { useState } from "react";
+import { useContext } from "react";
+import { UsersContext } from "../context/UsersContext";
 import "./Login.css";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { setToken } = useContext(UsersContext);
+
 
   const validarInput = (e) => {
     e.preventDefault();
+
+    
 
     if (!email.trim() || !password.trim()) {
       alert("Todos los campos son obligatorios");
@@ -20,6 +26,7 @@ const Login = () => {
 
     if (email === "users@gmail.com" && password === "123456") {
       alert("!Autenticación exitosa!");
+      setToken(true)
     } else {
       alert("Email o contraseña incorrectos");
     }

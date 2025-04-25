@@ -1,15 +1,14 @@
 import { useContext } from "react";
-import {CartContext} from "../context/CartContext";
+import { CartContext } from "../context/CartContext";
+import { UsersContext } from "../context/UsersContext";
 import "./Cart.css";
 
-
 const Cart = () => {
+  const { cart, total, agregarPizzas, restarPizzas } = useContext(CartContext);
 
-  const { cart, total, agregarPizzas, restarPizzas } =
-    useContext(CartContext);
+  const { token } = useContext(UsersContext);
 
-
-   return (
+  return (
     <div className="carro">
       <h3>Detalles del pedido:</h3>
       <div className="lista">
@@ -36,28 +35,12 @@ const Cart = () => {
           ))}
         </ul>
       </div>
-      <h2>Total: ${total}</h2><button className="buttonPagar">Pagar</button>
+      <h2>Total: ${total}</h2>
+      <button disabled={token ? false : true} className="buttonPagar">
+        Pagar
+      </button>
     </div>
   );
 };
 
 export default Cart;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

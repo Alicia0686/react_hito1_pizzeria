@@ -1,14 +1,12 @@
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import { useContext } from "react";
-import {CartContext} from "../context/CartContext"
+import { CartContext } from "../context/CartContext";
+import { Link } from "react-router-dom";
 
-const CardPizza = ({id, desc, img, ingredients, name, price}) => {
-  
+const CardPizza = ({ id, desc, img, ingredients, name, price }) => {
   const { agregarPizzas } = useContext(CartContext);
 
-  
-  
   return (
     <Card style={{ width: "24rem" }}>
       <Card.Img variant="top" src={img} />
@@ -34,13 +32,19 @@ const CardPizza = ({id, desc, img, ingredients, name, price}) => {
             variant="light"
             className="border-dark text-dark m-3"
           >
-            Ver Más 👀
+            <Link
+              to={`/Pizza/${id}`}
+              className="text-decoration-none ms-3 text-dark"
+            >
+              Ver Más 👀
+            </Link>
           </Button>
-          <Button 
-            bg="dark" 
+          <Button
+            bg="dark"
             variant="dark"
             className="m-3"
-            onClick={() => agregarPizzas({id, name, price, img,})}>
+            onClick={() => agregarPizzas({ id, name, price, img })}
+          >
             Añadir 🛒
           </Button>
         </div>
@@ -50,6 +54,3 @@ const CardPizza = ({id, desc, img, ingredients, name, price}) => {
 };
 
 export default CardPizza;
-
-
-  

@@ -5,15 +5,18 @@ import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { CartContext } from "../context/CartContext";
+import { UsersContext } from "../context/UsersContext";
 
 const Navbar1 = () => {
-  const {total} = useContext(CartContext);
-  const token = false;
+
+  const { total } = useContext(CartContext);
+  const { token, logout } = useContext(UsersContext);
+
+ 
+  
   const login = token ? (
-    <Button variant="outline-light ms-2">
-      <Link to="/logout" className="text-decoration-none ms-3 text-white">
-        🔐Logout
-      </Link>
+    <Button onClick={logout} variant="outline-light ms-2">
+     🔐Logout
     </Button>
   ) : (
     <Button variant="outline-light ms-2">
@@ -22,6 +25,8 @@ const Navbar1 = () => {
       </Link>
     </Button>
   );
+
+
   const register = token ? (
     <Button variant="outline-light ms-2">
       <Link to="/profile" className="text-decoration-none ms-3 text-white">
@@ -65,3 +70,13 @@ const Navbar1 = () => {
 };
 
 export default Navbar1;
+
+
+
+
+
+
+
+
+
+
