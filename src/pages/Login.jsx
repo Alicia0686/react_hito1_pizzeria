@@ -1,18 +1,17 @@
 import { useState } from "react";
 import { useContext } from "react";
 import { UsersContext } from "../context/UsersContext";
+import { useNavigate } from "react-router-dom";
 import "./Login.css";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { setToken } = useContext(UsersContext);
+  const { usersLogin } = useContext(UsersContext);
+  const navigate = useNavigate();
 
-
-  const validarInput = (e) => {
+  const validarInput = async (e) => {
     e.preventDefault();
-
-    
 
     if (!email.trim() || !password.trim()) {
       alert("Todos los campos son obligatorios");
@@ -24,11 +23,9 @@ const Login = () => {
       return;
     }
 
-    if (email === "users@gmail.com" && password === "123456") {
-      alert("!Autenticación exitosa!");
-      setToken(true)
-    } else {
-      alert("Email o contraseña incorrectos");
+    const result = await usersLogin(email, password);
+    if (result) {
+      navigate("/");
     }
   };
 
@@ -63,5 +60,11 @@ const Login = () => {
     </>
   );
 };
-     
+
 export default Login;
+
+
+
+
+
+

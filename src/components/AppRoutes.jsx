@@ -1,4 +1,4 @@
-import {UsersContext} from "../context/UsersContext";
+import { UsersContext } from "../context/UsersContext";
 import { useContext } from "react";
 import Navbar from "./Navbar";
 import Home from "../pages/Home";
@@ -11,9 +11,8 @@ import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import Profile from "./Profile";
 import NotFound from "../pages/NotFound";
 
-
 const AppRoutes = () => {
-  const {token} = useContext(UsersContext);
+  const { token } = useContext(UsersContext);
   console.log("rutas", token);
   return (
     <BrowserRouter>
@@ -40,6 +39,5 @@ const AppRoutes = () => {
     </BrowserRouter>
   );
 };
-
 
 export default AppRoutes;

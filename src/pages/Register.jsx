@@ -1,12 +1,16 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { UsersContext } from "../context/UsersContext";
+import { useNavigate } from "react-router-dom";
 import "./Login.css";
 
 const Register = () => {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
   const [checkPass, setCheckPass] = useState("");
+  const { usersRegister } = useContext(UsersContext);
+  const navigate = useNavigate();
 
-  const validarInput = (e) => {
+  const validarInput = async (e) => {
     e.preventDefault();
 
     if (!email.trim() || !pass.trim() || !checkPass.trim()) {
@@ -24,9 +28,11 @@ const Register = () => {
       return;
     }
 
-    console.log(email, pass, checkPass);
-
-    alert("!Registro exitoso!");
+    const success= await usersRegister(email, pass);
+    if (success) {
+      navigate("/")
+    }
+    
   };
 
   return (
